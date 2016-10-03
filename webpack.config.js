@@ -2,8 +2,6 @@
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
-// this allows scss files to be compiled into one file
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 // path.resolve concats its string arguments together to form an absolute path,
@@ -32,8 +30,12 @@ module.exports = {
                 }
             },
             {
-                test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('css!sass')
+                test: /\.css$/,
+                // these are style-loader, css-loader and sass-loader
+                // you might have to use
+                // require(!style!css!scss!./path/to/stylesheet)
+                // when importing (the !s are like pipes)
+                loaders: [ 'style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap' ]
             },
             {
 				test: /\.json$/,
@@ -63,14 +65,13 @@ module.exports = {
     plugins: [
         // ProvidePlugin automatically imports a module when it is referenced in a file
         new webpack.ProvidePlugin({
-            React: "react"
+            React: "react",
+            $: "jquery",
+            jQuery: "jquery"
         }),
         // DefinePlugin allows for global constants that can be changed at compile time. This allows for useful logging in DEV mode, for example
         new webpack.DefinePlugin({
             DEBUG: debug ? "true" : "false"
-        }),
-        new ExtractTextPlugin('public/style.min.css', {
-            allChunks: true
         })
     ].concat(debug
         ? []
