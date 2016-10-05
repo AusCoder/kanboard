@@ -1,6 +1,7 @@
-/* global DEBUG, React */
+/* global DEBUG */
 
-import { Component } from 'react';
+import React, { Component } from 'react';
+import Card from 'kb-scripts/components/presentational/Card';
 
 class Board extends Component {
   render() {
@@ -11,6 +12,7 @@ class Board extends Component {
       <div>
         board component from another file!<br />
         plus 1 change!
+        <Card title="some title" message="some message" />
       </div>
     );
   }
