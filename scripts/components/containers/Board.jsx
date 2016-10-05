@@ -34,15 +34,21 @@ class Board extends Component {
 
     return (
       <div>
-        <div className="container">
-          <div className="row">
-            <div className="sidebar col-xs-2">
+        <div className="sidebar">
+          <ul className="sidebar-nav">
+            <li>
               <AddCard addCardFunction={() => this.addCard()} />
-            </div>
-            <div className="main col-xs-10">
-              {cards.map((card, idx) => {
-                return <Card key={idx} title={card.title} message={card.message} />;
-              })}
+            </li>
+          </ul>
+        </div>
+        <div className="main">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-xs-12">
+                {cards.map((card, idx) => {
+                  return <Card key={idx} title={card.title} message={card.message} />;
+                })}
+              </div>
             </div>
           </div>
         </div>

@@ -1,7 +1,4 @@
-html, body, #app, .page {
-  height: 100%;
-  // overflow: hidden;
-}
+
 
 .card {
   padding: 5px;
@@ -10,12 +7,46 @@ html, body, #app, .page {
   margin-bottom: 10px;
 }
 
-.add-card-button {
+.sidebar {
+  z-index: 10;
+  display:block;
+  position: fixed;
+  width: 20%;
+  background: rgb(65, 58, 58);
+  min-height: 100%;
 }
 
 .main {
-  padding-top: 10px;
-  margin: 5px;
+  position: absolute;
+  width: 80%;
+  margin-left: 20%;
+  min-height: 100%;
   background: rgb(167, 167, 167);
-  height: 95%;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    text-indent: 20px;
+    line-height: 40px;
+    a {
+      text-decoration: none;
+      display: block;
+      color: #999999;
+    }
+    a:hover {
+      text-decoration: none;
+      color: #fff;
+      background: #777777;
+    }
+    .sidebar-nav li a:active,
+    .sidebar-nav li a:focus {
+      text-decoration: none;
+    }
+  }
 }

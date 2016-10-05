@@ -3,7 +3,9 @@ import React, { PropTypes } from 'react';
 const AddCard = ({ addCardFunction }) => {
   return (
     <div className="add-card-button button button-primary">
-      <button onClick={addCardFunction}>Add Card!</button>
+      <a onClick={addCardFunction}>
+        <div>Add card!</div>
+      </a>
     </div>
   );
 };
@@ -12,3 +14,4 @@ AddCard.propTypes = {
 };
 
 export default AddCard;
+// <button onClick={addCardFunction}>Add Card!</button>

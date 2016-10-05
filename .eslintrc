@@ -4,6 +4,8 @@
   "rules": {
       // Allow
       "arrow-body-style": 0,
+      // import
+      "import/no-unresolved": 0
   #     "object-shorthand": 0,
   #     "max-len": 0,
   #     "no-underscore-dangle": 0,
