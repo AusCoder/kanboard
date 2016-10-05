@@ -3,12 +3,8 @@ import React, { PropTypes } from 'react';
 const Card = ({ title, message }) => {
   return (
     <div className="card">
-      <div className="card-title">
-        {title}
-      </div>
-      <div className="card-message">
-        {message}
-      </div>
+      <h4>{title}</h4>
+      <p>{message}</p>
     </div>
   );
 };
