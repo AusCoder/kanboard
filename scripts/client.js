@@ -1,7 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
+/* global document */
 
-import Board from "./components/containers/Board";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const app = document.getElementById("app");
-ReactDOM.render(<Board />, app);
+import Board from './components/containers/Board';
+
+const app = document.getElementById('app');
+ReactDOM.render(<Board />, app); // eslint-disable-line

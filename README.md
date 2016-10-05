@@ -14,12 +14,16 @@ Kan boards are very useful organisation tools. I think I should get more organis
 * design the data structures
     * what information does a card contain
     * what information does the board contain
-    * will there be any "state" to the overall UI of the board?
+* will there be any "state" to the overall UI of the board?
+
+
+* set up routes file
+* add express server
+	* add middleware
+* add serverside rendering
+	* do this once express is setup, this will do away with the index.html page
 * setup database
     * think about the tables/fields in the database
-* setup basic html page
-* will there be different routes to the app?
-    * one route will suffice
 * write some basic presentational components
     * these will be independent of how information flows through the app (ie doesn't depend on redux vs flux vs manual data handling)
     * header
@@ -34,6 +38,11 @@ Kan boards are very useful organisation tools. I think I should get more organis
     * manually? no information storage the start with
     * flux
     * redux
+
+#### Done
+
+* setup basic html page
+* add eslinting
 
 ### Useful things
 
