@@ -1,0 +1,15 @@
+html, body, #app {
+  height: 100%;
+  // overflow: hidden;
+}
+
+.card {
+  display: inline-block;
+  background: red;
+}
+
+.board {
+  margin: 5px;
+  background: rgb(167, 167, 167);
+  height: 95%;
+}

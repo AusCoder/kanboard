@@ -33,9 +33,9 @@ module.exports = {
                 test: /\.css$/,
                 // these are style-loader, css-loader and sass-loader
                 // you might have to use
-                // require(!style!css!scss!./path/to/stylesheet)
+                // require(!style!css!sass!./path/to/stylesheet)
                 // when importing (the !s are like pipes)
-                loaders: [ 'style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap' ]
+                loaders: [ 'style', 'css?sourceMap', 'sass?sourceMap' ]
             },
             {
 				test: /\.json$/,

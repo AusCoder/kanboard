@@ -9,10 +9,14 @@ class Board extends Component {
       console.log('in debugging mode, allowed by webpacks DefinePlugin.');
     }
     return (
-      <div>
-        board component from another file!<br />
-        plus 1 change!
-        <Card title="some title" message="some message" />
+      <div className="board">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-2">
+              <Card title="some title" message="some message" />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
