@@ -1,10 +1,12 @@
-
+$large-sidebar-width: 12%;
+$large-main-width: 88%;
 
 .card {
-  padding: 5px;
+  padding: 10px;
+  margin: 10px;
   display: inline-block;
-  background: rgb(125, 139, 240);
-  margin-bottom: 10px;
+  background: rgb(255, 255, 255);
+  position: relative;
 }
 
 .sidebar {
@@ -14,6 +16,13 @@
   width: 20%;
   background: rgb(65, 58, 58);
   min-height: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @media(min-width: 1000px) {
+    width: $large-sidebar-width;
+  }
 }
 
 .main {
@@ -22,13 +31,17 @@
   margin-left: 20%;
   min-height: 100%;
   background: rgb(167, 167, 167);
+  @media(min-width: 1000px) {
+    width: $large-main-width;
+    margin-left: $large-sidebar-width;
+  }
 }
 
 .sidebar-nav {
   position: absolute;
   top: 0;
   width: 100%;
-  margin: 0;
+  margin: 20px 0px;
   padding: 0;
   list-style: none;
   li {

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 const AddCard = ({ addCardFunction }) => {
   return (
-    <div className="add-card-button button button-primary">
+    <div className="button button-primary">
       <a onClick={addCardFunction}>
         <div>Add card!</div>
       </a>

@@ -46,7 +46,7 @@ class Board extends Component {
             <div className="row">
               <div className="col-xs-12">
                 {cards.map((card, idx) => {
-                  return <Card key={idx} title={card.title} message={card.message} />;
+                  return <Card key={idx} title={card.title} message={card.message} aZIndex={200 - idx} />;
                 })}
               </div>
             </div>
