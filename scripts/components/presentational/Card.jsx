@@ -3,12 +3,20 @@
 import React, { PropTypes } from 'react';
 import Draggable from 'react-draggable';
 
-const Card = ({ title, message, aZIndex }) => {
+const Card = ({ title, message, aZIndex, editCb }) => {
   return (
     <Draggable zIndex={aZIndex} >
-      <div className="card" style={{ zIndex: aZIndex }}>
-        <h4>{title}</h4>
-        <p>{message}</p>
+      <div className="card" >
+        <div className="card-edit">
+          <a onClick={() => editCb()}>delete</a>
+        </div>
+        <div className="card-edit">
+          <a onClick={() => editCb()}>edit</a>
+        </div>
+        <div className="card-title">{title}</div>
+        <div className="card-message">
+          {message}
+        </div>
       </div>
     </Draggable>
   );
@@ -17,7 +25,7 @@ Card.propTypes = {
   title: PropTypes.string,
   message: PropTypes.string,
   aZIndex: PropTypes.number,
-  style: PropTypes.object, // eslint-disable-line
+  editCb: PropTypes.func,
 };
 
 export default Card;
