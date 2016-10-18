@@ -1,10 +1,28 @@
 /* global DEBUG */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import $ from 'jquery';
 
 import Card from 'kb-scripts/components/presentational/Card';
 import AddCard from 'kb-scripts/components/presentational/AddCard';
+
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // addCard: () => {
+    //   dispatch(add a card ...)
+    // },
+    // updateCard: () => {
+    //   dispatch(update a card ...)
+    // },
+  };
+};
 
 class Board extends Component {
   constructor() {
@@ -41,6 +59,18 @@ class Board extends Component {
     });
   }
 
+  changeNewTitle(someTitle) {
+    this.setState({
+      newTitle: someTitle,
+    });
+  }
+
+  changeNewMessage(someMessage) {
+    this.setState({
+      newMessage: someMessage,
+    });
+  }
+
   editCard(cardId, title, message) {
     // this is annoying because currently we store the cards in the Board's state.
     // it would be better to store the information somewhere else, such as a redux store
@@ -68,17 +98,6 @@ class Board extends Component {
     });
   }
 
-  changeNewTitle(someTitle) {
-    this.setState({
-      newTitle: someTitle,
-    });
-  }
-
-  changeNewMessage(someMessage) {
-    this.setState({
-      newMessage: someMessage,
-    });
-  }
 
   render() {
     const { cards } = this.state;
