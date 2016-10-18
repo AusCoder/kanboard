@@ -2,6 +2,7 @@ $large-sidebar-width: 12%;
 $large-main-width: 88%;
 
 .card {
+  border: 2px solid black;
   padding: 0;
   margin: 10px;
   display: inline-block;
@@ -25,6 +26,9 @@ $large-main-width: 88%;
     font-size: 14px;
     margin: 8px;
     min-height: 30px;
+  }
+  input {
+    width: 166px;
   }
 }
 

@@ -19,7 +19,7 @@ class Board extends Component {
   }
 
   componentWillMount() {
-    this.addCard('some title', 'some message');
+    this.addCard('some title', 'some message', { x: 50, y: 50, z: 0 });
   }
 
   componentDidMount() {
@@ -27,8 +27,8 @@ class Board extends Component {
     console.log($('.main').width());
   }
 
-  addCard(someTitle, someMessage) {
-    const sampleCard = { id: this.state.curId, title: someTitle, message: someMessage };
+  addCard(someTitle, someMessage, positionObj) {
+    const sampleCard = { id: this.state.curId, title: someTitle, message: someMessage, positionObj };
     this.setState({
       curId: this.state.curId + 1,
       cards: this.state.cards.concat([sampleCard]),
@@ -41,12 +41,32 @@ class Board extends Component {
     });
   }
 
-  // editCard(card) {
-  //   return function (editedTitle, editedMessage) {
-  //     card.title = editedTitle;
-  //     card.message = editedMessage;
-  //   }
-  // }
+  editCard(cardId, title, message) {
+    // this is annoying because currently we store the cards in the Board's state.
+    // it would be better to store the information somewhere else, such as a redux store
+    const card = this.state.cards.filter((c) => { return c.id === cardId; })[0];
+    const otherCards = this.state.cards.filter((c) => { return c.id !== cardId; });
+    card.title = title;
+    card.message = message;
+    this.setState({
+      cards: otherCards.concat(card),
+    });
+  }
+  deleteCard(cardId) {
+    console.log('deleteing: ', cardId);
+    const otherCards = this.state.cards.filter((c) => { return c.id !== cardId; });
+    this.setState({
+      cards: otherCards,
+    });
+  }
+  moveCard(cardId, xyCoords) {
+    const card = this.state.cards.filter((c) => { return c.id === cardId; })[0];
+    const otherCards = this.state.cards.filter((c) => { return c.id !== cardId; });
+    card.positionObj = { x: xyCoords.x, y: xyCoords.y, z: 0 };
+    this.setState({
+      cards: otherCards.concat(card),
+    });
+  }
 
   changeNewTitle(someTitle) {
     this.setState({
@@ -68,7 +88,7 @@ class Board extends Component {
         <div className="sidebar">
           <ul className="sidebar-nav">
             <li>
-              <AddCard addCardFunction={() => this.addCard(this.state.newTitle, this.state.newMessage)} />
+              <AddCard addCardFunction={() => this.addCard(this.state.newTitle, this.state.newMessage, { x: 0, y: 0, z: 0 })} />
             </li>
             <li>
               <div className="input-group">
@@ -84,8 +104,18 @@ class Board extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-xs-12">
-                {cards.map((card, idx) => {
-                  return <Card key={idx} title={card.title} message={card.message} aZIndex={idx} editCb={() => this.toggleEdit()} />;
+                {cards.map((card) => {
+                  return (
+                    <Card
+                      key={card.id}
+                      title={card.title}
+                      message={card.message}
+                      positionObj={card.positionObj}
+                      editCb={(title, message) => this.editCard(card.id, title, message)}
+                      delCb={() => this.deleteCard(card.id)}
+                      moveCb={xyCoords => this.moveCard(card.id, xyCoords)}
+                    />
+                );
                 })}
               </div>
             </div>
