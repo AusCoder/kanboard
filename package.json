@@ -4,8 +4,10 @@
   "description": "a kanban board web app",
   "main": "server.js",
   "scripts": {
-    "watch": "node_modules/.bin/webpack-dev-server --content-base public --inline --hot",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node_modules/.bin/webpack-dev-server --content-base public --inline --hot",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --display-chunks --progress",
+    "watch": "npm run build -- --display-modules --watch"
   },
   "keywords": [
     "kan"
@@ -13,7 +15,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
+    "font-awesome": "^4.6.3",
+    "helmet": "^2.3.0",
     "jquery": "^3.1.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
@@ -42,10 +48,12 @@
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
     "node-sass": "^3.10.1",
     "sass-loader": "^4.0.2",
     "scss-loader": "0.0.1",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.0"
   }

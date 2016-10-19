@@ -21,11 +21,11 @@ class Card extends Component {
     return (
       <Draggable zIndex={positionObj.z} defaultPosition={{ x: positionObj.x, y: positionObj.y }} onStart={(e, d) => { moveCb({ x: d.x, y: d.y }); }} onStop={(e, d) => { moveCb({ x: d.x, y: d.y }); }} >
         <div className="card" >
-          <div className="card-edit">
-            <a onClick={() => delCb()}>delete</a>
+          <div className="card-icon icon-delete">
+            <a onClick={() => delCb()}><i className="fa fa-times" /></a>
           </div>
-          <div className="card-edit">
-            <a onClick={() => this.toggleEdit()}>edit</a>
+          <div className="card-icon icon-edit">
+            <a onClick={() => this.toggleEdit()}><i className="fa fa-edit" /></a>
           </div>
           <div className="card-title">
             {

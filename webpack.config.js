@@ -38,13 +38,22 @@ module.exports = {
                 loaders: [ 'style', 'css?sourceMap', 'sass?sourceMap' ]
             },
             {
-				test: /\.json$/,
-				loader: "json"
-			},
+                // these are loaders for fonts, graphics and other such things (including font-awesome)
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: "url?name=[name].[ext]&limit=10000&mimetype=application/font-woff"
+            },
             {
-				test: /\.txt$/,
-				loader: "raw"
-			}
+                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: "file?name=[name].[ext]"
+            },
+            {
+              test: /\.json$/,
+              loader: "json"
+            },
+            {
+              test: /\.txt$/,
+              loader: "raw"
+            }
         ]
     },
     // this is the output directory for the webpack file

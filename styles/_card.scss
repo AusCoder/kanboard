@@ -1,0 +1,51 @@
+.card {
+  border: 2px solid black;
+  padding: 0;
+  margin: 10px;
+  display: inline-block;
+  background: rgb(255, 255, 255);
+  position: fixed;
+  max-width: 200px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .card-icon {
+    float: right;
+		text-align: center;
+		margin-right: 2px;
+		margin-top: 2px;
+		vertical-align: text-top;;
+  }
+	.icon-delete {
+		position: relative;
+		top: -3px;
+		i {
+			color: rgb(30, 0, 0);
+			font-size: 1.5em;
+		}
+	}
+	.icon-edit {
+		i {
+			color: rgb(0, 0, 30);
+		}
+	}
+  .card-title {
+    margin: 10px;
+    font-size: 18px;
+    font-weight: 450;
+    min-width: 150px;
+  }
+  .card-message {
+    font-size: 14px;
+    margin: 8px;
+    min-height: 30px;
+  }
+  input {
+    width: 166px;
+  }
+}
+
+.card .fa {
+	font-size: 1.4em;
+}
