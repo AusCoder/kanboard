@@ -19,7 +19,8 @@
     "react-dom": "^15.3.1",
     "react-draggable": "^2.2.2",
     "react-redux": "^4.4.5",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-actions": "^0.12.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",

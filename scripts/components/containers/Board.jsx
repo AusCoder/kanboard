@@ -1,11 +1,14 @@
-/* global DEBUG */
+/* global React, DEBUG */
 
-import React, { Component } from 'react';
+import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import $ from 'jquery';
 
 import Card from 'kb-scripts/components/presentational/Card';
 import AddCard from 'kb-scripts/components/presentational/AddCard';
+
+import { addCard } from 'kb-scripts/redux/actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,16 +17,20 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    // addCard: () => {
-    //   dispatch(add a card ...)
-    // },
-    // updateCard: () => {
-    //   dispatch(update a card ...)
-    // },
-  };
+  return bindActionCreators({
+    // action creators go here
+    addCard,
+  }, dispatch);
+  // alternatively
+  //
+  // return {
+  //   addCard: (card) => {
+  //     dispatch(addCard(card));
+  //   },
+  // };
 };
 
+@connect(mapStateToProps, mapDispatchToProps)
 class Board extends Component {
   constructor() {
     super();
@@ -37,7 +44,7 @@ class Board extends Component {
   }
 
   componentWillMount() {
-    this.addCard('some title', 'some message', { x: 50, y: 50, z: 0 });
+    this.props.addCard({ title: 'a title', message: 'a message', positionObj: { x: 50, y: 50, z: 0 } });
   }
 
   componentDidMount() {
@@ -100,7 +107,7 @@ class Board extends Component {
 
 
   render() {
-    const { cards } = this.state;
+    const { cards } = this.props;
 
     return (
       <div>
@@ -144,5 +151,9 @@ class Board extends Component {
     );
   }
 }
+Board.propTypes = {
+  addCard: PropTypes.func,
+  cards: PropTypes.array,
+};
 
 export default Board;
