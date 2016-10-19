@@ -1,8 +1,9 @@
 
 /*
-keep track of card ids:
+keep track of card ids and Z indices:
 */
 let nextCardId = 0;
+let nextZIndex = 0;
 
 /*
 action types
@@ -10,6 +11,8 @@ action types
 
 export const ADD_CARD = 'ADD_CARD';
 export const MOVE_CARD = 'MOVE_CARD';
+export const EDIT_CARD = 'EDIT_CARD';
+export const DELETE_CARD = 'DELETE_CARD';
 
 /*
 action creators
@@ -24,7 +27,12 @@ action creators
 //   };
 // };
 
-export const addCard = (title, message, positionObj) => {
+export const addCard = (title, message, xyCoords) => {
+  const positionObj = {
+    ...xyCoords,
+    z: nextZIndex,
+  };
+  nextZIndex += 1;
   const newCard = { id: nextCardId, title, message, positionObj };
   nextCardId += 1;
   return {
@@ -38,8 +46,28 @@ export const moveCard = (id, xyCoords) => {
     type: MOVE_CARD,
     update: {
       id,
-      x: xyCoords.x,
-      y: xyCoords.y,
+      positionObj: {
+        ...xyCoords,
+        z: nextZIndex++, // eslint-disable-line
+      },
     },
+  };
+};
+
+export const editCard = (id, title, message) => {
+  return {
+    type: EDIT_CARD,
+    update: {
+      id,
+      title,
+      message,
+    },
+  };
+};
+
+export const deleteCard = (id) => {
+  return {
+    type: DELETE_CARD,
+    id,
   };
 };

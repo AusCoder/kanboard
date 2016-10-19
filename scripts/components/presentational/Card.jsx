@@ -19,7 +19,7 @@ class Card extends Component {
     const { title, message, positionObj, editCb, delCb, moveCb } = this.props;
     const { isEdit } = this.state;
     return (
-      <Draggable zIndex={positionObj.z} defaultPosition={{ x: positionObj.x, y: positionObj.y }} onStop={(e, d) => { moveCb({ x: d.x, y: d.y }); }} >
+      <Draggable zIndex={positionObj.z} defaultPosition={{ x: positionObj.x, y: positionObj.y }} onStart={(e, d) => { moveCb({ x: d.x, y: d.y }); }} onStop={(e, d) => { moveCb({ x: d.x, y: d.y }); }} >
         <div className="card" >
           <div className="card-edit">
             <a onClick={() => delCb()}>delete</a>
