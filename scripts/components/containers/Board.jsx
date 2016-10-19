@@ -8,7 +8,7 @@ import $ from 'jquery';
 import Card from 'kb-scripts/components/presentational/Card';
 import AddCard from 'kb-scripts/components/presentational/AddCard';
 
-import { addCard } from 'kb-scripts/redux/actions';
+import { addCard, moveCard } from 'kb-scripts/redux/actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     // action creators go here
     addCard,
+    moveCard,
   }, dispatch);
   // alternatively
   //
@@ -32,38 +33,22 @@ const mapDispatchToProps = (dispatch) => {
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Board extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      curId: 0,
       cards: [],
       newTitle: '',
       newMessage: '',
-      toggleEdit: false,
     };
   }
 
   componentWillMount() {
-    this.props.addCard({ title: 'a title', message: 'a message', positionObj: { x: 50, y: 50, z: 0 } });
+    this.props.addCard('sample title', 'sample message', { x: 50, y: 50, z: 0 });
   }
 
   componentDidMount() {
     // you can use something like this to get the width of the overall main screen:
     console.log($('.main').width());
-  }
-
-  addCard(someTitle, someMessage, positionObj) {
-    const sampleCard = { id: this.state.curId, title: someTitle, message: someMessage, positionObj };
-    this.setState({
-      curId: this.state.curId + 1,
-      cards: this.state.cards.concat([sampleCard]),
-    });
-  }
-
-  toggleEdit() {
-    this.setState({
-      toggleEdit: !this.state.toggleEdit,
-    });
   }
 
   changeNewTitle(someTitle) {
@@ -96,25 +81,26 @@ class Board extends Component {
       cards: otherCards,
     });
   }
-  moveCard(cardId, xyCoords) {
-    const card = this.state.cards.filter((c) => { return c.id === cardId; })[0];
-    const otherCards = this.state.cards.filter((c) => { return c.id !== cardId; });
-    card.positionObj = { x: xyCoords.x, y: xyCoords.y, z: 0 };
-    this.setState({
-      cards: otherCards.concat(card),
-    });
-  }
+  // moveCard(cardId, xyCoords) {
+  //   const card = this.state.cards.filter((c) => { return c.id === cardId; })[0];
+  //   const otherCards = this.state.cards.filter((c) => { return c.id !== cardId; });
+  //   card.positionObj = { x: xyCoords.x, y: xyCoords.y, z: 0 };
+  //   this.setState({
+  //     cards: otherCards.concat(card),
+  //   });
+  // }
 
 
   render() {
     const { cards } = this.props;
+    console.log('render cards: ', cards);
 
     return (
       <div>
         <div className="sidebar">
           <ul className="sidebar-nav">
             <li>
-              <AddCard addCardFunction={() => this.addCard(this.state.newTitle, this.state.newMessage, { x: 0, y: 0, z: 0 })} />
+              <AddCard addCardFunction={() => this.props.addCard(this.state.newTitle, this.state.newMessage, { x: 0, y: 0, z: 0 })} />
             </li>
             <li>
               <div className="input-group">
@@ -137,9 +123,7 @@ class Board extends Component {
                       title={card.title}
                       message={card.message}
                       positionObj={card.positionObj}
-                      editCb={(title, message) => this.editCard(card.id, title, message)}
-                      delCb={() => this.deleteCard(card.id)}
-                      moveCb={xyCoords => this.moveCard(card.id, xyCoords)}
+                      moveCb={xyCoords => this.props.moveCard(card.id, xyCoords)}
                     />
                 );
                 })}
@@ -153,7 +137,12 @@ class Board extends Component {
 }
 Board.propTypes = {
   addCard: PropTypes.func,
+  moveCard: PropTypes.func,
   cards: PropTypes.array,
 };
 
 export default Board;
+
+// editCb={(title, message) => this.editCard(card.id, title, message)}
+// delCb={() => this.deleteCard(card.id)}
+// moveCb={xyCoords => this.moveCard(card.id, xyCoords)}

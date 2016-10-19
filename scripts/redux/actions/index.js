@@ -1,5 +1,4 @@
 
-import _ from 'lodash';
 /*
 keep track of card ids:
 */
@@ -10,6 +9,7 @@ action types
 */
 
 export const ADD_CARD = 'ADD_CARD';
+export const MOVE_CARD = 'MOVE_CARD';
 
 /*
 action creators
@@ -24,11 +24,22 @@ action creators
 //   };
 // };
 
-export const addCard = (card) => {
-  const nextCard = _.merge(card, { id: nextCardId });
-  nextCardId++;
+export const addCard = (title, message, positionObj) => {
+  const newCard = { id: nextCardId, title, message, positionObj };
+  nextCardId += 1;
   return {
     type: ADD_CARD,
-    card: nextCard,
+    card: newCard,
+  };
+};
+
+export const moveCard = (id, xyCoords) => {
+  return {
+    type: MOVE_CARD,
+    update: {
+      id,
+      x: xyCoords.x,
+      y: xyCoords.y,
+    },
   };
 };
