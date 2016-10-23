@@ -18,6 +18,7 @@ export const DELETE_CARD = 'DELETE_CARD';
 action creators
 */
 
+// this is redux thunk style actions...
 // export const addCard = (card) => {
 //   return (dispatch) => {
 //     dispatch({

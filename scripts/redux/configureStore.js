@@ -1,3 +1,5 @@
+/* global window */
+
 import { createStore } from 'redux';
 import rootReducer from 'kb-scripts/redux/reducers';
 
