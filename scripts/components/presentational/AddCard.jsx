@@ -4,7 +4,7 @@ const AddCard = ({ addCardFunction }) => {
   return (
     <div className="button button-primary">
       <a onClick={addCardFunction}>
-        <div>Add card</div>
+        <i className="material-icons">rowing</i>
       </a>
     </div>
   );

@@ -1,22 +1,25 @@
 $large-sidebar-width: 12%;
 $large-main-width: 88%;
 
+$sidebar-width: 100px;
+
 @import './card';
+@import './fonts';
 
 .sidebar {
   z-index: 10;
   display:block;
   position: fixed;
-  width: 20%;
+  width: $sidebar-width;
   background: rgb(65, 58, 58);
   min-height: 100%;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  @media(min-width: 1000px) {
-    width: $large-sidebar-width;
-  }
+  // @media(min-width: 1000px) {
+  //   width: $large-sidebar-width;
+  // }
   .input-group {
     padding: 5px;
   }
@@ -33,16 +36,18 @@ $large-main-width: 88%;
   box-shadow: none;
 }
 
+body {
+  background: rgb(167, 167, 167);
+}
+
 .main {
   position: absolute;
-  width: 80%;
-  margin-left: 20%;
+  margin-left: 100px;
   min-height: 100%;
-  background: rgb(167, 167, 167);
-  @media(min-width: 1000px) {
-    width: $large-main-width;
-    margin-left: $large-sidebar-width;
-  }
+  // @media(min-width: 1000px) {
+  //   width: $large-main-width;
+  //   margin-left: $large-sidebar-width;
+  // }
 }
 
 .sidebar-nav {
@@ -68,6 +73,12 @@ $large-main-width: 88%;
     .sidebar-nav li a:active,
     .sidebar-nav li a:focus {
       text-decoration: none;
+    }
+    .add-card-modal {
+      position: absolute;
+      left: 100px;
+      top: 0px;
+      display: inline-block;
     }
   }
 }

@@ -1,4 +1,4 @@
-/* global React, DEBUG */
+/* global React, DEBUG, window */
 
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -44,7 +44,7 @@ class Board extends Component {
 
   componentDidMount() {
     // you can use something like this to get the width of the overall main screen:
-    console.log($('.main').width());
+    console.log($(window).width());
   }
 
   render() {

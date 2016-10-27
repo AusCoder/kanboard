@@ -40,11 +40,11 @@ module.exports = {
             {
                 // these are loaders for fonts, graphics and other such things (including font-awesome)
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url?name=[name].[ext]&limit=10000&mimetype=application/font-woff"
+                loader: "url?name=fonts/[name].[ext]&limit=10000&mimetype=application/font-woff"
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "file?name=[name].[ext]"
+                loader: "file?name=fonts/[name].[ext]"
             },
             {
               test: /\.json$/,

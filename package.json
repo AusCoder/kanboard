@@ -25,6 +25,7 @@
     "jquery": "^3.1.1",
     "karma-chai": "^0.1.0",
     "karma-mocha": "^1.2.0",
+    "material-design-icons": "^3.0.1",
     "mocha": "^3.1.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
