@@ -16,5 +16,7 @@ exports.routes = function (app) {
     res.redirect('/public');
   });
 
-  app.post('/cards')
+  app.post('/cards', function (req, res) {
+
+	});
 };

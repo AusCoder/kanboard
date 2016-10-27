@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import $ from 'jquery';
 
+import Sidebar from 'kb-scripts/components/containers/Sidebar';
+
 import Card from 'kb-scripts/components/presentational/Card';
-import AddCard from 'kb-scripts/components/presentational/AddCard';
 
 import { addCard, moveCard, editCard, deleteCard } from 'kb-scripts/redux/actions';
 
@@ -24,6 +25,7 @@ const mapDispatchToProps = (dispatch) => {
     editCard,
     deleteCard,
   }, dispatch);
+
   // alternatively
   //
   // return {
@@ -35,13 +37,6 @@ const mapDispatchToProps = (dispatch) => {
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Board extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      newTitle: '',
-      newMessage: '',
-    };
-  }
 
   componentWillMount() {
     this.props.addCard('sample title', 'sample message', { x: 50, y: 50, z: 0 });
@@ -52,38 +47,14 @@ class Board extends Component {
     console.log($('.main').width());
   }
 
-  changeNewTitle(someTitle) {
-    this.setState({
-      newTitle: someTitle,
-    });
-  }
-
-  changeNewMessage(someMessage) {
-    this.setState({
-      newMessage: someMessage,
-    });
-  }
-
   render() {
     const { cards } = this.props;
 
     return (
       <div>
-        <div className="sidebar">
-          <ul className="sidebar-nav">
-            <li>
-              <AddCard addCardFunction={() => this.props.addCard(this.state.newTitle, this.state.newMessage, { x: 0, y: 0 })} />
-            </li>
-            <li>
-              <div className="input-group">
-                <input type="text" className="form-control" onChange={(e) => { this.changeNewTitle(e.target.value); }} />
-              </div>
-              <div className="input-group">
-                <input type="text" className="form-control" onChange={(e) => { this.changeNewMessage(e.target.value); }} />
-              </div>
-            </li>
-          </ul>
-        </div>
+        <Sidebar
+          addCard={this.props.addCard}
+        />
         <div className="main">
           <div className="container-fluid">
             <div className="row">

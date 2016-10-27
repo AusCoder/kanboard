@@ -1,3 +1,5 @@
+/* global expect, describe, it */
+
 var actions = require('kb-scripts/redux/actions');
 
 describe('Action::Question', () => {
