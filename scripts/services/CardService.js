@@ -4,7 +4,9 @@ const cardsRoute = '/cards';
 export function backUp(cards) {
   return fetch(cardsRoute, {
     method: 'POST',
-    // headers: put security here!
+    headers: {
+      'content-type': 'application/json',
+    },
     body: JSON.stringify(cards),
   })
   .then((response) => {

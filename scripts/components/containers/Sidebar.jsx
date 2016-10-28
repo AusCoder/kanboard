@@ -1,8 +1,5 @@
 import { Component, PropTypes } from 'react';
 
-import AddCard from 'kb-scripts/components/presentational/AddCard';
-
-
 class Sidebar extends Component {
   constructor(props) {
     super(props);
@@ -67,6 +64,11 @@ class Sidebar extends Component {
               </div>
             }
           </li>
+          <li>
+            <a className="sidebar-button" onClick={() => this.props.backupCards()}>
+              <i className="material-icons">autorenew</i>
+            </a>
+          </li>
         </ul>
       </div>
     );
@@ -74,7 +76,7 @@ class Sidebar extends Component {
 }
 Sidebar.propTypes = {
   addCard: PropTypes.func,
+  backupCards: PropTypes.func,
 };
 
 export default Sidebar;
-// <input value={newMessage} type="text" className="form-control" onChange={(e) => { this.changeNewMessage(e.target.value); }} />

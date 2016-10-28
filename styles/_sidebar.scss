@@ -45,6 +45,7 @@ textarea {
       text-decoration: none;
       display: block;
       color: #999999;
+      cursor: default;
     }
     // a:hover {
     //   text-decoration: none;
@@ -99,4 +100,16 @@ textarea {
       }
     }
   }
+}
+
+.sidebar-nav .sidebar-button {
+    text-decoration: none;
+    display: block;
+    color: #999999;
+    cursor: default;
+}
+.sidebar-nav .sidebar-button:hover {
+  text-decoration: none;
+  color: #fff;
+  background: #777777;
 }

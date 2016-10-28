@@ -9,6 +9,8 @@ import Sidebar from 'kb-scripts/components/containers/Sidebar';
 
 import Card from 'kb-scripts/components/presentational/Card';
 
+import { backUp } from 'kb-scripts/services/CardService';
+
 import { addCard, moveCard, editCard, deleteCard } from 'kb-scripts/redux/actions';
 
 const mapStateToProps = (state) => {
@@ -54,6 +56,7 @@ class Board extends Component {
       <div>
         <Sidebar
           addCard={this.props.addCard}
+          backupCards={() => backUp(this.props.cards)}
         />
         <div className="main">
           <div className="container-fluid">
