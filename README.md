@@ -1,48 +1,48 @@
-#### Kanban board
+#### Note board
+
+This is a note board app with the ability for users to drag and drop notes around a screen. It is written using React and Redux. It is live at www.sebmuellermath.com/board/.
 
 
-#### Motivation
-
-Kan boards are very useful organisation tools. I think I should get more organised so that I can do more interesting software projects. So as a software project, I am gunna make a kan board! (I really hope I don't need a kan board to complete this kan board project...)
-
+Below are some organisational notes that I made when starting the project.
 #### Data structures
-
-
 
 #### ToDo
 
-* design the data structures
-    * what information does a card contain
-    * what information does the board contain
 * will there be any "state" to the overall UI of the board?
-
-
-* set up routes file
-* add express server
-	* add middleware
-* add serverside rendering
-	* do this once express is setup, this will do away with the index.html page
 * setup database
     * think about the tables/fields in the database
 * write some basic presentational components
     * these will be independent of how information flows through the app (ie doesn't depend on redux vs flux vs manual data handling)
-    * header
-        * add card option
-        * modal for add card
     * footer
         * "powered by coffee and an ageing macbook"
-    * card
-        * color card
-    * board
+
 * try a few different ways of passing information around
     * manually? no information storage the start with
     * flux
-    * redux
 
 #### Done
 
 * setup basic html page
 * add eslinting
+
+* design the data structures
+    * what information does a card contain
+    * what information does the board contain
+* set up routes file
+* add serverside rendering
+	* do this once express is setup, this will do away with the index.html page
+* add express server
+	* add middleware
+* write some basic presentational components
+	* header
+			* add card option
+			* modal for add card
+	* board
+	* card
+			* color card
+* try a few different ways of passing information around
+	* redux
+
 
 ### Useful things
 
