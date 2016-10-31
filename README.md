@@ -1,12 +1,13 @@
-#### Note board
+## Note board
 
 This is a note board app with the ability for users to drag and drop notes around a screen. It is written using React and Redux. It is live at www.sebmuellermath.com/board/.
 
 
-Below are some organisational notes that I made when starting the project.
-#### Data structures
 
-#### ToDo
+## Development Notes
+Below are some organisational notes that I made when starting the project.
+
+### ToDo
 
 * will there be any "state" to the overall UI of the board?
 * setup database
@@ -20,7 +21,7 @@ Below are some organisational notes that I made when starting the project.
     * manually? no information storage the start with
     * flux
 
-#### Done
+### Done
 
 * setup basic html page
 * add eslinting
